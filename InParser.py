@@ -1,6 +1,7 @@
 # Jay Hayward 2025
 
 
+
 from argparse import ArgumentParser
 import base64
 
@@ -10,19 +11,12 @@ def CustomParser():
     parser.add_argument('input_str', 
                         help = "The string to encode", 
                         type = str)
-    parser.add_argument('--alg', 
+    parser.add_argument('--key', 
                         help = "The encoding algorithm to use", 
                         type = str, 
                         default = 'base64')
     argv = parser.parse_args()
     return(argv)
-
-
-# handle no arguments 
-# if(not(argv.input_str)):
-#     print('No arguments specified.\nPlease select --embed or --extract')
-#     print('Use -h or --help for usage')
-#     exit(1)
 
 
 

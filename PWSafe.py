@@ -8,37 +8,54 @@
 # Create an executable to make this run-able from any source.
 
 import InParser  # my custom parser script
+import base64
+from string import printable
 
 
 def display_info(argv):
     print(f'Printing input string: "{argv.input_str}"')
-    print(f'Printing input string: "{argv.key}"')
+    print(f'Printing input key: "{argv.key}"')
 
 
 def create_rule(key):
     str_val = 0
-    ascii_offset = 32
     for i in list(key):
-        str_val += ord(i) - ascii_offset
+        str_val += ord(i)
+    
+    rule = str_val % len(printable)
 
-    modifier = str_val % 95
+    print(f'rule: +{rule}')
+    return(rule)
 
-    return(modifier)
+
+def generate_ciphertext(plaintext, rule):
+    print(f'plaintext: {plaintext}')
+    ciphertext = ''
+    for i in plaintext:
+        j = ((printable.index(i)+rule) % len(printable))
+        ciphertext += printable[j]
+
+    # print(f'ciphertext: {ciphertext}')
+    return(ciphertext)
 
 
-def generate_output(input_str, rule):
-    # tmp
-    out_str = input_str
+def decode_chiphetext(ciphertext, rule):
+    decoded_text = ''
+    for i in ciphertext:
+        j = ((printable.index(i)-rule) % len(printable))
+        decoded_text += printable[j]
 
-    return(out_str)
+    return(decoded_text)
 
 
 def main():
     argv = InParser.CustomParser()
     # display_info(argv)
-    rule = create_rule(argv.key)
-    output = generate_output(argv.input_str, rule)
-    print(output)
+    rule = create_rule(argv.key)  # how to modify the plaintext into ciphertext
+    ciphertext = generate_ciphertext(argv.input_str, rule)
+    print(f'ciphetext: {ciphertext}')
+    decodedtext = decode_chiphetext(ciphertext, rule)
+    print(f'decoded text: {decodedtext}')
 
     return()
 

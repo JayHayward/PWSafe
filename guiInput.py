@@ -58,8 +58,6 @@ def submit():
     print(f'Username : {name}')
     print(f'Password: {password}')
 
-    # bingus
-    
     name_var.set('')
     pw_var.set('')
 

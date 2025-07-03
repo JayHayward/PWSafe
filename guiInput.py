@@ -50,26 +50,29 @@ def text_box():
 
     root.mainloop()
 
+# get input, and remove input when submitted
+def submit():
+    name=  name_var.get()
+    password = pw_var.get()
+    
+    print(f'Username : {name}')
+    print(f'Password: {password}')
+
+    # bingus
+    
+    name_var.set('')
+    pw_var.set('')
 
 # box for input
 def input_box():
+    global name_var, pw_var
     root = tk.Tk()
-    root.geometry('600x400')
-
     name_var = tk.StringVar()
     pw_var = tk.StringVar()
+    root.geometry('600x400')
 
-    # get input, and remove input when submitted
-    def submit():
-        name=  name_var.get()
-        password = pw_var.get()
-        
-        print(f'Username : {name}')
-        print(f'Password: {password}')
-        
-        name_var.set('')
-        pw_var.set('')
-
+    # name_var = tk.StringVar()
+    # pw_var = tk.StringVar()
     name_label = tk.Label(root, text = 'Username', font = ('calibre', 10, 'bold'))
     name_input = tk.Entry(root, textvariable = name_var, font = ('calibre', 10, 'bold'))
 
@@ -89,12 +92,15 @@ def input_box():
     root.mainloop()
 
 
-
+name_var = None
+pw_var = None
 
 def main():
+    
     # button_box()
     # text_box()
     input_box()
+
     return
 
 

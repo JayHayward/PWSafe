@@ -7,6 +7,7 @@
 # Create an executable to make this run-able from any source.
 
 import InParser  # my custom parser script
+import guiInput  # my custom text prompt scripts
 import base64
 from string import printable
 
@@ -54,6 +55,8 @@ def main():
     print(f'ciphertext: {ciphertext}')
     decodedtext = decode_chiphetext(ciphertext, rule)
     print(f'decoded text: {decodedtext}')
+
+    
 
     return()
 

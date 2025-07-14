@@ -67,7 +67,7 @@ def input_box():
     root = tk.Tk()
     name_var = tk.StringVar()
     pw_var = tk.StringVar()
-    root.geometry('600x400')
+    root.geometry('400x200')
 
     # name_var = tk.StringVar()
     # pw_var = tk.StringVar()

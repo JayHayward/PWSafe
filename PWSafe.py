@@ -56,8 +56,6 @@ def main():
     decodedtext = decode_chiphetext(ciphertext, rule)
     print(f'decoded text: {decodedtext}')
 
-    
-
     return()
 
 

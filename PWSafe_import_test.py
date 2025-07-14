@@ -1,6 +1,8 @@
+# Jay Hayward 2025
 # Class implementation
 
 
+import PWSafe as pws
 import tkinter as tk
 
 class my_app(tk.Tk):
@@ -8,7 +10,6 @@ class my_app(tk.Tk):
         super().__init__()
 
         self.geometry('400x200')
-
         self.title('PWSafe')
         
         self.name_var = tk.StringVar()
@@ -26,6 +27,16 @@ class my_app(tk.Tk):
 
         box_spacing = tk.Label(self, text = '\n')
 
+
+        self.username_label_var = tk.StringVar()
+        self.pw_label_var = tk.StringVar()
+
+        self.username_label_var.set('hello:')
+        self.pw_label_var.set('world:')
+        self.print_username = tk.Label(self, textvariable=self.username_label_var, font=('calibre', 10, 'bold'))
+        self.print_pw = tk.Label(self, textvariable=self.pw_label_var, font = ('calibre', 10, 'bold'))
+
+
         name_label.grid(row = 0, column = 0)
         name_input.grid(row = 0, column = 1)
         pw_label.grid(row = 1, column = 0)
@@ -33,12 +44,17 @@ class my_app(tk.Tk):
         submit_button.grid(row = 2, column = 1)
         exit_button.grid(row = 3, column = 1)
         box_spacing.grid(row = 4, column = 1)
+        self.print_username.grid(row = 5, column = 0)
+        self.print_pw.grid(row = 6, column = 0)
         # open_new_window_button.grid(row = 4, column = 1)
 
     def submit(self):
         name = self.name_var.get()
         password = self.pw_var.get()
         
+        self.username_label_var.set(f'hello:{name}')
+        self.pw_label_var.set(f'world:{password}')
+
         print(f'Username : {name}')
         print(f'Password: {password}')
 
@@ -48,6 +64,14 @@ class my_app(tk.Tk):
     # def open_new_window(self):
     #     new_window = tk.Toplevel(self)
     #     new_window.title('secondary window')
+
+    def pws_handling(self):
+        get_pws_rule = pws.create_rule()
+        get_pws_ciphertext = pws.generate_ciphertext()
+        get_pws_decoded = pws.decode_chiphetext()
+
+        return()
+
 
 
 

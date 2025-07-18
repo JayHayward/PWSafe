@@ -22,7 +22,7 @@ def create_rule(key):
     
     rule = str_val % len(printable)  # restrict the rule to keep affected text in printable range
 
-    print(f'rule: +{rule}')
+    # print(f'rule: +{rule}')
     return(rule)
 
 
@@ -36,7 +36,7 @@ def generate_ciphertext(plaintext, rule):
     return(ciphertext)
 
 
-def decode_chiphetext(ciphertext, rule):
+def decode_ciphertext(ciphertext, rule):
     decoded_text = ''
     for i in ciphertext:
         j = ((printable.index(i)-rule) % len(printable))
@@ -51,7 +51,7 @@ def main():
     rule = create_rule(argv.key)  # how to modify the plaintext into ciphertext
     ciphertext = generate_ciphertext(argv.input_str, rule)
     print(f'ciphertext: {ciphertext}')
-    decodedtext = decode_chiphetext(ciphertext, rule)
+    decodedtext = decode_ciphertext(ciphertext, rule)
     print(f'decoded text: {decodedtext}')
 
     return()

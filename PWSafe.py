@@ -30,7 +30,7 @@ def generate_ciphertext(plaintext, rule):
     print(f'plaintext: {plaintext}')
     ciphertext = ''
     for i in plaintext:
-        j = ((printable.index(i)+rule) % len(printable))  # for ever character in plaintext, keep it within printable range
+        j = ((printable.index(i)+rule) % len(printable))  # for every character in plaintext, keep it within printable range
         ciphertext += printable[j]
 
     return(ciphertext)
